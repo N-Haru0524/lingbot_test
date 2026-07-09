@@ -10,6 +10,7 @@ requires-python = ">=3.10"
 dependencies = [
     "lingbot-vision",
     "opencv-python",
+    "pyrealsense2",
 ]
 
 [tool.uv]
