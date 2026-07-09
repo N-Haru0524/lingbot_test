@@ -6,13 +6,20 @@ readme = "readme.md"
 requires-python = ">=3.10"
 # lingbot-vision(submodule) を editable なパス依存として参照する。
 # torch など実行時依存は lingbot-vision 側の pyproject から自動で解決される。
+# opencv は GUI(cv2.imshow) が使える通常版を明示（下の override で headless を除外）。
 dependencies = [
     "lingbot-vision",
+    "opencv-python",
 ]
 
 [tool.uv]
 # このリポジトリ自体はパッケージ化しない（テストスクリプト置き場）。
 package = false
+# lingbot-vision が要求する opencv-python-headless を除外する。
+# （headless は cv2.imshow を含まないため。python_version < '0' は常に偽 = 常に無効化）
+override-dependencies = [
+    "opencv-python-headless; python_version < '0'",
+]
 
 [tool.uv.sources]
 lingbot-vision = { path = "lingbot-vision", editable = true }
