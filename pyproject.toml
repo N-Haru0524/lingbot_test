@@ -1,0 +1,18 @@
+[project]
+name = "lingbot-test"
+version = "0.1.0"
+description = "CPU smoke-test harness for lingbot-vision (Intel RealSense D405)"
+readme = "readme.md"
+requires-python = ">=3.10"
+# lingbot-vision(submodule) を editable なパス依存として参照する。
+# torch など実行時依存は lingbot-vision 側の pyproject から自動で解決される。
+dependencies = [
+    "lingbot-vision",
+]
+
+[tool.uv]
+# このリポジトリ自体はパッケージ化しない（テストスクリプト置き場）。
+package = false
+
+[tool.uv.sources]
+lingbot-vision = { path = "lingbot-vision", editable = true }
