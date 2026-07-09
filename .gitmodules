@@ -1,3 +1,4 @@
 [submodule "lingbot-vision"]
 	path = lingbot-vision
 	url = https://github.com/Robbyant/lingbot-vision.git
+    ignore = dirty   # 中の変更を status に出さない（all なら完全に無視）
